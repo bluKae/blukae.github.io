@@ -1,0 +1,4 @@
+.big-uppercase {
+    @apply uppercase;
+    letter-spacing: 0.1rem;
+}
