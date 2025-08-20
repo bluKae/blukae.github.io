@@ -1,14 +1,60 @@
-<header class="w-full">
-    <nav
-        class="max-w-[70rem] h-24 mx-auto font-semibold flex flex-row w-full items-center"
-    >
-        <a href="/" class="big-uppercase inline mr-auto"
-            >bluKae's Personal Website</a
-        >
+---
+import { Image } from "astro:assets";
+import menu from "../assets/menu.svg";
 
-        <ul class="list-none flex flex-row">
-            <li class="mx-5"><a href="/links">Links</a></li>
-            <li class="mx-5"><a href="/ads">Ads</a></li>
+const sections = [
+    { id: "about", title: "About" },
+    { id: "projects", title: "Projects" },
+    { id: "links", title: "Links" },
+];
+---
+
+<header
+    class="fixed top-0 w-full max-h-screen bg-white z-10"
+    x-data="{ open: false }"
+    class="sticky top-0"
+    :class="open && 'h-full'"
+>
+    <nav
+        class="px-4 max-w-[70rem] mx-auto font-semibold min-h-24 flex items-center"
+        :class="open && 'min-h-screen flex-col'"
+    >
+        <div class="flex items-center md:flex-1">
+            <a
+                href="/"
+                class="animated-underline uppercase font-normal tracking-wide text-lg"
+                x-on:click.prevent="$scrollTo({ targetId: 'hero' })"
+                >bluKae's Personal Website</a
+            >
+
+            <button class="w-12 h-12 md:hidden" @click="open = !open">
+                <Image class="m-auto" src={menu} alt="Open menu" />
+            </button>
+        </div>
+
+        <ul
+            class="list-none justify-between items-center hidden md:flex"
+            :class="open && 'flex-col important-flex'"
+        >
+            {
+                sections.map(({ id, title }) => (
+                    <li class="mx-5 table-cell">
+                        <a
+                            class="text-lg font-normal animated-underline"
+                            href={`#${id}`}
+                            x-on:click.prevent="$scrollTo"
+                        >
+                            {title}
+                        </a>
+                    </li>
+                ))
+            }
         </ul>
     </nav>
 </header>
+
+<style>
+    .important-flex {
+        display: flex;
+    }
+</style>

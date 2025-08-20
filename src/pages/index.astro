@@ -1,50 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import githubIcon from "../assets/github.svg";
-import mastodonIcon from "../assets/mastodon.svg";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Projects from "../components/Projects.astro";
+import Links from "../components/Links.astro";
 ---
 
 <Layout>
-    <main class="my-auto flex flex-col items-center justify-center">
-        <img
-            src="/avatar-500x500.webp"
-            alt="bluKae's Avatar"
-            class="rounded-full m-2"
-            width="500"
-            height="500"
-        />
-        <h1 class="font-semibold text-3xl my-3">bluKae</h1>
-        <p class="text-xl">Computer Science Student</p>
-        <nav class="my-5">
-            <ul class="flex flex-row">
-                <li class="mx-5">
-                    <a href="https://github.com/blukae"
-                        ><Image
-                            src={githubIcon}
-                            alt="GitHub Icon"
-                            class="icon"
-                        /></a
-                    >
-                </li>
-                <li class="mx-5">
-                    <a rel="me" href="https://social.tchncs.de/@bluKae"
-                        ><Image
-                            src={mastodonIcon}
-                            alt="Mastodon Icon"
-                            class="icon"
-                        /></a
-                    >
-                </li>
-            </ul>
-        </nav>
-    </main>
-    <footer>
-        <img
-            src="https://count.getloli.com/@blukae?darkmode=0"
-            alt="bluKae's counter"
-            height="100"
-            width="315"
-        />
-    </footer>
+    <Hero />
+    <About />
+    <Projects />
+    <Links />
 </Layout>
